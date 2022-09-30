@@ -1,31 +1,23 @@
 import "./main.scss";
-import { Button } from './components/button/button';
+// import { Button } from './components/button/button';
 
 
-let root  = document.querySelector('#root');
+// let root  = document.querySelector('#root');
 
-root.insertAdjacentHTML('beforeend', Button());
+// root.insertAdjacentHTML('beforeend', Button());
 
 
+// let array = [2, 3, 4, undefined, null, "", false, 5, 6, 0];
 
-// const add = (...num) => {
-//     let sum = 0;
-//     for (let arg of num) {
-//         sum += arg;
-//     };
-//     return sum;
-// };
+// let compact = (arr) => {
+//     return arr.filter(Boolean);
+// }
 
-// add(1, 2, 3);
-// console.log(add);
+// console.log(compact(array));
 
-// const min = (a, b) => {
-//     if (a > b) {
-//         return b;
-//     } else {
-//         return a;
-//     }
-// };
+// let arr = [1, 2, 3, 4, 5];
 
-// min(1, 2);
+// let suminput = arr.reduce((sum, current) => sum + current, 0);
+
+// console.log(suminput)
 
