@@ -1,31 +1,29 @@
 import "./main.scss";
-import { Button } from './components/button/button';
+import "./modules/module-2";
+// import { Button } from './components/button/button';
 
 
-let root  = document.querySelector('#root');
+// let root  = document.querySelector('#root');
 
-root.insertAdjacentHTML('beforeend', Button());
+// root.insertAdjacentHTML('beforeend', Button());
 
 
+// ДЕЛАЕМ БУТЕРБРОД
+// const products = [
+//     'bread',
+//     'sousage',
+//     'butter',
+//     'fish',
+//     'meat',
+//   ];
+  
+//   const reciept = ['bread', 'butter', 'sousage'];
+  
+//   const sandwich = products
+//     .filter((item) => reciept.includes(item))
+//     .map((item) => item + ' sauce ')
+//     .reduce((plate, item) => plate + item, '');
+  
+//     console.log(sandwich);
 
-// const add = (...num) => {
-//     let sum = 0;
-//     for (let arg of num) {
-//         sum += arg;
-//     };
-//     return sum;
-// };
-
-// add(1, 2, 3);
-// console.log(add);
-
-// const min = (a, b) => {
-//     if (a > b) {
-//         return b;
-//     } else {
-//         return a;
-//     }
-// };
-
-// min(1, 2);
 
