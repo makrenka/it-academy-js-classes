@@ -1,31 +1,56 @@
 import "./main.scss";
-import { Button } from './components/button/button';
 
 
-let root  = document.querySelector('#root');
+// Регулярные выражения
+// const regExp1 = new RegExp ('template', 'i');
+// const ergExp2 = /tamplate/i;
 
-root.insertAdjacentHTML('beforeend', Button());
+// const str = 'Template';
+// regExp2.test(str);
 
 
+// Метод объектов this
 
-// const add = (...num) => {
-//     let sum = 0;
-//     for (let arg of num) {
-//         sum += arg;
-//     };
-//     return sum;
-// };
+// Подмена контекста
+// const user = {
+//     firstName: 'Alex',
+//     lastName: 'asd',
+//     getFullName() {
+//       return `${this.firstName} ${this.lastName}`;
+//     }  
+//   }
+  
+//   const user1 = user.getFullName.bind(user);
+  
+//   console.log(user1());
 
-// add(1, 2, 3);
-// console.log(add);
 
-// const min = (a, b) => {
-//     if (a > b) {
-//         return b;
-//     } else {
-//         return a;
+// Создание классов в ES5 and ES6
+
+// function UserES5 (firstName, lastName) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.getUserFullName = function() {
+//       return `${this.firstName} ${this.lastName}`;
 //     }
-// };
+//   }
+  
+//   const user = new UserES5('Alex0', 'asd');
+  
+//   console.log(user);
+  
+//   class UserES6 {
+//     constructor(firstName, lastName) {
+//       this.firstNam = firstName;
+//       this.lastName = lastName;
+//     }
+//     getUserFullName() {
+//       return `${this.firstName} ${this.lastName}`;
+//     }
+//   }
+  
+//   const user1 = new UserES6('Alex0', 'asd');
+  
+//   console.log(user1);
 
-// min(1, 2);
 
