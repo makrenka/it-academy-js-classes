@@ -32,8 +32,7 @@ class Search extends HTMLElement {
 
     connectedCallback() {
         this.addEventListener('input', this.onSearch);
-        this.render();
-        
+        this.render();        
     }
 
     disconnectedCallback() {
