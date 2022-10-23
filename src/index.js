@@ -1,10 +1,34 @@
 import "./main.scss";
-import { Button } from './components/button/button';
 
-const add123 = (a, b) => a + b;
-let root  = document.querySelector('#root');
 
-root.insertAdjacentHTML('beforeend', Button());
+class Search extends HTMLElement {
+    constructor() {
+        super();
+        this.data = [
+            "Albania",
+            "Bahamas",
+            "Armenia",
+            "Belarus",
+            "Brazil",
+            "Cambodia",
+            "Colombia",
+            "Czech Republic",
+            "Estonia",
+            "France",
+            "Georgia",
+            "Germany",
+        ];
+    }
 
-const res = add123(222, 3);
-console.log("Helloasda");
+    connectedCallback() {
+        this.render();
+    }
+
+    render() {
+        this.innerHTML = `
+            <input type='text' placeholder='Type something...' />
+        `
+    }
+}
+
+customElements.define('user-search', Search);
