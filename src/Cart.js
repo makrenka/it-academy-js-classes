@@ -7,20 +7,33 @@ export default class Cart extends HTMLElement {
         this.data = [];
     }
 
-    watchOnData() {
-        window.addEventListener('share-data', (evt) => {
-            this.data = [...this.data, evt.detail];
-            this.quantity = this.quantity + 1;
-            this.render();
-        })
-    }
-
-    onClick(evt) {
+    onToggleTable(evt) {
         if (evt.target.closest('.cart-link-icon')) {
             evt.preventDefault();
             this.isVisible = !this.isVisible;
             this.render();
-        };        
+        }
+    }
+
+    onDeleteItem(evt) {
+        if (evt.target.closest('.btn')) {
+            const productId = Number(evt.target.dataset.productId);
+            this.data = this.data.filter((item) => item.id !== productId);
+            this.render()
+        }
+    }
+
+    onClick(evt) {
+        this.onToggleTable(evt);
+        this.onDeleteItem(evt);
+    }
+
+    watchOnData() {
+        window.addEventListener('share-data', (evt) => {
+            this.data.push(evt.detail);
+            this.quantity = this.quantity + 1;
+            this.render()
+        })
     }
 
     connectedCallback() {
@@ -62,7 +75,10 @@ export default class Cart extends HTMLElement {
                     <th><img src='${item.preview}'/></th>
                     <th>${item.description}</th>
                     <th>${item.price}</th>
-                    <th>${item.quantity}</th>                    
+                    <th>${item.quantity}</th>     
+                    <td>
+                        <button data-product-id="${item.id}" class='btn btn-danger'>Delete</button>
+                    </td>               
                 </tr>
                 `)}
             ` : `
