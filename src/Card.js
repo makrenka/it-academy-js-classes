@@ -1,3 +1,5 @@
+import storageService from "./services/StorageService.js";
+
 export default class Card extends HTMLElement {
     constructor() {
         super();
@@ -6,8 +8,7 @@ export default class Card extends HTMLElement {
 
     onClick(evt) {
         if (evt.target.closest('.btn')) {
-            const event = new CustomEvent('share-data', { bubbles: true, detail: this.data });
-            this.dispatchEvent(event);
+            storageService.setItem('cart-data', [this.data]);
         }
     }
 
