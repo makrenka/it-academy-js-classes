@@ -1,3 +1,4 @@
+import { STORAGE_KEYS } from './constants/storage.js';
 import storageService from "./services/StorageService.js";
 
 export default class Card extends HTMLElement {
@@ -8,7 +9,7 @@ export default class Card extends HTMLElement {
 
     onClick(evt) {
         if (evt.target.closest('.btn')) {
-            storageService.setItem('cart-data', [this.data]);
+            storageService.setItem(STORAGE_KEYS.cartData, [this.data]);
         }
     }
 
