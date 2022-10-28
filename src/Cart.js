@@ -26,7 +26,7 @@ export default class Cart extends HTMLElement {
     initializeData() {
         const data = storageService.getItem(STORAGE_KEYS.cartData);
         this.data = data ? this.cartDataAdapter(data) : [];
-        this.quantity = data.length;
+        this.quantity = data?.length ?? 0;
     }
 
     onToggleTable(evt) {
