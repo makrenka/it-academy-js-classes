@@ -1,10 +1,22 @@
 import "./main.scss";
-import { Button } from './components/button/button';
 
-const add123 = (a, b) => a + b;
-let root  = document.querySelector('#root');
+const btn = document.querySelector('.btn');
 
-root.insertAdjacentHTML('beforeend', Button());
+btn.addEventListener('click', (evt) => {
+    const event = new CustomEvent('show-notification', {
+        bubbles: true,
+        detail: {
+            title: 'Hello!',
+            description: 'I am added',
+        }
+    });
 
-const res = add123(222, 3);
-console.log("Helloasda");
+    evt.currentTarget.dispatchEvent(event);
+});
+
+window.addEventListener('show-notification', (evt) => {
+    const toast = document.querySelector('.toast');
+    toast.classList.add('show');
+    toast.querySelector('.me-auto').textContent = evt.detail.title;
+    toast.querySelector('.toast-body').textContent = evt.detail.description;
+})
