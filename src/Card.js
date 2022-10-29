@@ -9,7 +9,8 @@ export default class Card extends HTMLElement {
 
     onClick(evt) {
         if (evt.target.closest('.btn')) {
-            storageService.setItem(STORAGE_KEYS.cartData, [this.data]);
+            const data = storageService.getItem(STORAGE_KEYS.cartData) ?? [];
+            storageService.setItem(STORAGE_KEYS.cartData, [...data, this.data]);
         }
     }
 

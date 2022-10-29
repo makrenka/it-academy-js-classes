@@ -40,8 +40,39 @@ export default class Cart extends HTMLElement {
     onDeleteItem(evt) {
         if (evt.target.closest('.btn')) {
             const productId = Number(evt.target.dataset.productId);
-            this.data = this.data.filter((item) => item.id !== productId);
-            this.render()
+            // const currentProductIndex = this.data.findIndex((item) => item.id === productId);
+            // const currentProduct = this.data[currentProductIndex];
+            // const updatedProduct = {
+            //     ...currentProduct,
+            //     quantity: currentProduct.quantity > 1 ? currentProduct.quantity - 1 : 1,
+            // };
+            // const updatedData = this.data.slice();
+            // updatedData.splice(currentProductIndex, 1, updatedProduct);
+
+            // console.log(updatedData);
+            // const newData = updatedData.filter(
+            //     (item) => item.id !== productId && item.quantity === 1
+            // );
+            
+            // console.log(newData);
+
+            const filteredData = this.data
+                .map(
+                    (item) => {
+                        if (item.id === productId) {
+                            return {
+                                ...item,
+                                quantity: item.quantity - 1,
+                            };
+                        }
+                        return {
+                            ...item,
+                        };
+                    }
+                )
+                .filter((item) => item.quantity);
+            storageService.setItem(STORAGE_KEYS.cartData, filteredData);
+            // this.render();
         }
     }
 
