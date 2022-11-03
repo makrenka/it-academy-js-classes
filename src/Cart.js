@@ -14,13 +14,15 @@ export default class Cart extends HTMLElement {
         return data.map((item, _, arr) => {
             return {
                 ...item,
-                quantity: arr.filter((subItem) => subItem.id === item.id).length,
+                quantity: item.quantity 
+                ? item.quantity 
+                : arr.filter((subItem) => subItem.id === item.id).length,
             }
         })
-        .filter(
-            (item, index, arr) =>
-                arr.findIndex((finditem) => finditem.id === item.id) === index
-        );
+            .filter(
+                (item, index, arr) =>
+                    arr.findIndex((finditem) => finditem.id === item.id) === index
+            );
     }
 
     initializeData() {
@@ -53,7 +55,7 @@ export default class Cart extends HTMLElement {
             // const newData = updatedData.filter(
             //     (item) => item.id !== productId && item.quantity === 1
             // );
-            
+
             // console.log(newData);
 
             const filteredData = this.data
@@ -70,9 +72,9 @@ export default class Cart extends HTMLElement {
                         };
                     }
                 )
-                .filter((item) => item.quantity);
+                .filter((item) => Boolean(item.quantity));
             storageService.setItem(STORAGE_KEYS.cartData, filteredData);
-            // this.render();
+            this.render();
         }
     }
 
@@ -90,7 +92,7 @@ export default class Cart extends HTMLElement {
     }
 
     connectedCallback() {
-        this.initializeData();        
+        this.initializeData();
         this.addEventListener('click', this.onClick);
         this.watchOnData();
         this.render();
@@ -144,7 +146,7 @@ export default class Cart extends HTMLElement {
                 
             </tbody>
         </table>
-        ` : '' }
+        ` : ''}
         `;
     }
 }
