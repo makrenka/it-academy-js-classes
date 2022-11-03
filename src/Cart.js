@@ -5,24 +5,27 @@ export default class Cart extends HTMLElement {
     constructor() {
         super();
         this.quantity = 0;
-        this.isVisible = false;
-        this.onClick = this.onClick.bind(this);
+        this.isVisible = false;        
         this.data = [];
     }
 
     cartDataAdapter(data) {
-        return data.map((item, _, arr) => {
+        const cartData = data.map((item, _, arr) => {
             return {
                 ...item,
-                quantity: item.quantity 
-                ? item.quantity 
-                : arr.filter((subItem) => subItem.id === item.id).length,
+                quantity: item.quantity
+                    ? item.quantity
+                    : arr.filter((subItem) => subItem.id === item.id).length,
             }
         })
             .filter(
                 (item, index, arr) =>
                     arr.findIndex((finditem) => finditem.id === item.id) === index
             );
+
+        this.quantity = cartData.reduce((acc, current) => (acc += current.quantity), 0);
+
+        return cartData;
     }
 
     initializeData() {
@@ -85,8 +88,7 @@ export default class Cart extends HTMLElement {
 
     watchOnData() {
         window.addEventListener('storage', (evt) => {
-            this.data = this.cartDataAdapter(evt.detail.value);
-            this.quantity = this.quantity + 1;
+            this.data = this.cartDataAdapter(evt.detail.value);            
             this.render()
         })
     }
