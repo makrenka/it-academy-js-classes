@@ -130,7 +130,7 @@ export default class Cart extends HTMLElement {
                 <tr>
                     <th>${item.id}</th>
                     <th>${item.title}</th>
-                    <th><img src='${item.preview}'/></th>
+                    <th><img src='${item.image}'/></th>
                     <th>${item.description}</th>
                     <th>${item.price}</th>
                     <th>${item.quantity}</th>     

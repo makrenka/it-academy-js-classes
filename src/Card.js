@@ -22,7 +22,7 @@ export default class Card extends HTMLElement {
     render() {
         this.innerHTML = `
             <div class="card" style="width: 18rem;">
-                <img src="${this.data.preview}" class="card-img-top" alt="${this.data.title}">
+                <img src="${this.data.image}" class="card-img-top" alt="${this.data.title}">
                 <div class="card-body">
                     <h5 class="card-title">${this.data.title}</h5>
                     <p class="card-text">${this.data.description}</p>
