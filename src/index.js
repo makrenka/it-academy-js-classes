@@ -1,10 +1,35 @@
 import "./main.scss";
-import { Button } from './components/button/button';
 
-const add123 = (a, b) => a + b;
-let root  = document.querySelector('#root');
+const box = document.querySelector('.box');
+const box2 = document.querySelector('.box2');
 
-root.insertAdjacentHTML('beforeend', Button());
+const animateElement = (element, duration, distance) => {
+    const frame = duration / 1000 * 60;
+    const delta = distance / frame;
 
-const res = add123(222, 3);
-console.log("Helloasda");
+    let currentX = element.getBoundingClientRect().x;
+    let currentX2 = element.getBoundingClientRect().x;
+    const maxX = currentX + distance;    
+    
+    const timerId = setInterval(() => {
+        if(currentX2 < maxX) {
+            box2.style.transform = `translateX(${currentX2}px)`;
+            currentX2 += delta;
+        } else {
+            clearInterval(timerId);
+        }
+    }, 16)
+
+    const step = () => {
+        currentX += delta;
+        element.style.transform = `translateX(${currentX}px)`;
+        if (currentX < maxX) {
+            requestAnimationFrame(step);
+        }
+    }
+    requestAnimationFrame(step);
+};
+
+box.addEventListener('click', () => {
+    animateElement(box, 1000, 200);
+})
