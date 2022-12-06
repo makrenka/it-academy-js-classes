@@ -39,7 +39,7 @@ import "./main.scss";
 
 
 
-// Promices
+// Promises
 
 // const loadImage = (src, callback) => {
 //     const image = new Image();
