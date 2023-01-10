@@ -5,7 +5,7 @@ export default class Cart extends HTMLElement {
     constructor() {
         super();
         this.quantity = 0;
-        this.isVisible = false;        
+        this.isVisible = false;
         this.data = [];
     }
 
@@ -88,7 +88,7 @@ export default class Cart extends HTMLElement {
 
     watchOnData() {
         window.addEventListener('storage', (evt) => {
-            this.data = this.cartDataAdapter(evt.detail.value);            
+            this.data = this.cartDataAdapter(evt.detail.value);
             this.render()
         })
     }

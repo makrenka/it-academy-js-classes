@@ -20,6 +20,7 @@ export default class Card extends HTMLElement {
     }
 
     render() {
+
         this.innerHTML = `
             <div class="card" style="width: 18rem;">
                 <img src="${this.data.preview}" class="card-img-top" alt="${this.data.title}">
